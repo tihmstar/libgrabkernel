@@ -36,7 +36,6 @@ AC_TYPE_UINT8_T
 
 # Checks for library functions.
 AC_FUNC_ERROR_AT_LINE
-AC_FUNC_MALLOC
 
 LT_INIT
 
