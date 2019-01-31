@@ -13,11 +13,12 @@ AC_CONFIG_MACRO_DIRS([m4])
 AM_PROG_LIBTOOL
 AM_INIT_AUTOMAKE
 
-CFLAGS+=" -D LIBGRABKERNEL_VERSION_COMMIT_COUNT=\\\"$(git rev-list --count HEAD | tr -d '\n')\\\""
-CFLAGS+=" -D LIBGRABKERNEL_VERSION_COMMIT_SHA=\\\"$(git rev-parse HEAD | tr -d '\n')\\\""
+OBJCFLAGS+=" -D LIBGRABKERNEL_VERSION_COMMIT_COUNT=\\\"$(git rev-list --count HEAD | tr -d '\n')\\\""
+OBJCFLAGS+=" -D LIBGRABKERNEL_VERSION_COMMIT_SHA=\\\"$(git rev-parse HEAD | tr -d '\n')\\\""
 
 # Checks for programs.
 AC_PROG_CC
+AC_PROG_OBJC
 
 # Checks for libraries.
 

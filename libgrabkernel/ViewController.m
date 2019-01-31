@@ -18,9 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    grabkernel();
+    
+    
+    char path[1024] = {0};
+    snprintf(path, sizeof(path), "%skernel", getenv("TMPDIR"));
 
-    printf("");
+    grabkernel(path);
+
 }
 
 

@@ -11,6 +11,8 @@
 
 #include <stdio.h>
 
-int grabkernel(void);
+const char* libgrabkernel_version();
+int grabkernel(char *downloadPath);
+
 
 #endif /* libgrabkernel_h */

@@ -7,16 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8715950E220392B6008A0E66 /* libMobileGestalt.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8715950D220392B6008A0E66 /* libMobileGestalt.tbd */; };
 		87D2D15C22037EFE00DA88A5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D2D15B22037EFE00DA88A5 /* AppDelegate.m */; };
 		87D2D15F22037EFE00DA88A5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D2D15E22037EFE00DA88A5 /* ViewController.m */; };
 		87D2D16222037EFE00DA88A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87D2D16022037EFE00DA88A5 /* Main.storyboard */; };
 		87D2D16422037F0000DA88A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87D2D16322037F0000DA88A5 /* Assets.xcassets */; };
 		87D2D16722037F0000DA88A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87D2D16522037F0000DA88A5 /* LaunchScreen.storyboard */; };
 		87D2D16A22037F0000DA88A5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D2D16922037F0000DA88A5 /* main.m */; };
-		87D2D17222037F3200DA88A5 /* libgrabkernel.c in Sources */ = {isa = PBXBuildFile; fileRef = 87D2D17122037F3200DA88A5 /* libgrabkernel.c */; };
+		87D2D17222037F3200DA88A5 /* libgrabkernel.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D2D17122037F3200DA88A5 /* libgrabkernel.m */; };
+		87D2D17622038D8200DA88A5 /* libfragmentzip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87D2D17522038D8200DA88A5 /* libfragmentzip.a */; };
+		87D2D17822038EF300DA88A5 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87D2D17722038EF300DA88A5 /* libcurl.a */; };
+		87D2D17A22038EFC00DA88A5 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 87D2D17922038EFC00DA88A5 /* libz.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8715950D220392B6008A0E66 /* libMobileGestalt.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libMobileGestalt.tbd; path = usr/lib/libMobileGestalt.tbd; sourceTree = SDKROOT; };
 		87D2D15722037EFE00DA88A5 /* libgrabkernel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = libgrabkernel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87D2D15A22037EFE00DA88A5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		87D2D15B22037EFE00DA88A5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -28,8 +33,11 @@
 		87D2D16822037F0000DA88A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87D2D16922037F0000DA88A5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		87D2D17022037F3200DA88A5 /* libgrabkernel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = libgrabkernel.h; path = ../include/libgrabkernel/libgrabkernel.h; sourceTree = "<group>"; };
-		87D2D17122037F3200DA88A5 /* libgrabkernel.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = libgrabkernel.c; sourceTree = "<group>"; };
+		87D2D17122037F3200DA88A5 /* libgrabkernel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = libgrabkernel.m; sourceTree = "<group>"; };
 		87D2D1732203878200DA88A5 /* all_libgrabkernel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = all_libgrabkernel.h; sourceTree = "<group>"; };
+		87D2D17522038D8200DA88A5 /* libfragmentzip.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfragmentzip.a; path = external/libfragmentzip/libfragmentzip/.libs/libfragmentzip.a; sourceTree = "<group>"; };
+		87D2D17722038EF300DA88A5 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = "deps/curl-static/libcurl.a"; sourceTree = "<group>"; };
+		87D2D17922038EFC00DA88A5 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +45,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8715950E220392B6008A0E66 /* libMobileGestalt.tbd in Frameworks */,
+				87D2D17A22038EFC00DA88A5 /* libz.tbd in Frameworks */,
+				87D2D17822038EF300DA88A5 /* libcurl.a in Frameworks */,
+				87D2D17622038D8200DA88A5 /* libfragmentzip.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +60,7 @@
 			children = (
 				87D2D15922037EFE00DA88A5 /* libgrabkernel */,
 				87D2D15822037EFE00DA88A5 /* Products */,
+				87D2D17422038D8200DA88A5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,7 +79,7 @@
 				87D2D15B22037EFE00DA88A5 /* AppDelegate.m */,
 				87D2D1732203878200DA88A5 /* all_libgrabkernel.h */,
 				87D2D17022037F3200DA88A5 /* libgrabkernel.h */,
-				87D2D17122037F3200DA88A5 /* libgrabkernel.c */,
+				87D2D17122037F3200DA88A5 /* libgrabkernel.m */,
 				87D2D15D22037EFE00DA88A5 /* ViewController.h */,
 				87D2D15E22037EFE00DA88A5 /* ViewController.m */,
 				87D2D16022037EFE00DA88A5 /* Main.storyboard */,
@@ -76,6 +89,17 @@
 				87D2D16922037F0000DA88A5 /* main.m */,
 			);
 			path = libgrabkernel;
+			sourceTree = "<group>";
+		};
+		87D2D17422038D8200DA88A5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8715950D220392B6008A0E66 /* libMobileGestalt.tbd */,
+				87D2D17922038EFC00DA88A5 /* libz.tbd */,
+				87D2D17722038EF300DA88A5 /* libcurl.a */,
+				87D2D17522038D8200DA88A5 /* libfragmentzip.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,7 +172,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87D2D17222037F3200DA88A5 /* libgrabkernel.c in Sources */,
+				87D2D17222037F3200DA88A5 /* libgrabkernel.m in Sources */,
 				87D2D15F22037EFE00DA88A5 /* ViewController.m in Sources */,
 				87D2D16A22037F0000DA88A5 /* main.m in Sources */,
 				87D2D15C22037EFE00DA88A5 /* AppDelegate.m in Sources */,
@@ -290,39 +314,65 @@
 		87D2D16E22037F0000DA88A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = M7EX974CE7;
+				ENABLE_BITCODE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/external/libfragmentzip/include",
+					"$(SRCROOT)/deps/curl-static",
+				);
 				INFOPLIST_FILE = libgrabkernel/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/external/libfragmentzip/libfragmentzip/.libs",
+					"$(PROJECT_DIR)/deps/curl-static",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.tihmstar.libgrabkernel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "e3ef8058-1ab3-4113-aecb-df7973e2c62f";
 				PROVISIONING_PROFILE_SPECIFIER = hasi;
+				SYSTEM_HEADER_SEARCH_PATHS = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
 		87D2D16F22037F0000DA88A5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/external/libfragmentzip/include",
+					"$(SRCROOT)/deps/curl-static",
+				);
 				INFOPLIST_FILE = libgrabkernel/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/external/libfragmentzip/libfragmentzip/.libs",
+					"$(PROJECT_DIR)/deps/curl-static",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.tihmstar.libgrabkernel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SYSTEM_HEADER_SEARCH_PATHS = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
