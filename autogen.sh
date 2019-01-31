@@ -15,6 +15,7 @@ automake --add-missing
 SYSROOT="$(xcrun --show-sdk-path --sdk iphoneos)"
 export CFLAGS+="-arch arm64 -isysroot $SYSROOT -I$PWD/deps/curl-static/"
 export CXXFLAGS+="-arch arm64 -isysroot $SYSROOT -I$PWD/deps/curl-static/"
+export OBJCFLAGS+="-arch arm64 -isysroot $SYSROOT -I$PWD/deps/curl-static/"
 export LDFLAGS+="-L$PWD/deps/curl-static"
 
 

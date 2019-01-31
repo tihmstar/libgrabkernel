@@ -3,6 +3,6 @@ AM_LDFLAGS = -L/usr/local/lib/
 
 lib_LTLIBRARIES = libgrabkernel.la 
 
-libgrabkernel_la_CPPFLAGS = $(AM_OBJCFLAGS)
+libgrabkernel_la_OBJCFLAGS = $(AM_OBJCFLAGS)
 libgrabkernel_la_LIBADD = $(AM_LDFLAGS)
 libgrabkernel_la_SOURCES = libgrabkernel.m
