@@ -146,7 +146,7 @@ int grabkernel(char *downloadPath){
     size_t sModel = 0;
     fragmentzip_t * fz= NULL;
     char *kernelpath = NULL;
-
+    printf("[GK] %s\n",libgrabkernel_version());
     assure(downloadPath);
 
     sBuild = sizeof(build);
