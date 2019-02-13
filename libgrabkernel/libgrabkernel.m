@@ -115,9 +115,8 @@ char *getKernelpath(const char *buildmanifestPath, const char *model){
         for (NSDictionary *item in identities) {
             NSDictionary *info = [item valueForKey:@"Info"];
             NSString *hwmodel = [info valueForKey:@"DeviceClass"];
-            hwmodel = hwmodel.uppercaseString;
             
-            if (strcmp(hwmodel.UTF8String, model) == 0) {
+            if (strcasecmp(hwmodel.UTF8String, model) == 0) {
                 NSDictionary *manifest = [item valueForKey:@"Manifest"];
                 NSDictionary *kcache = [manifest valueForKey:@"KernelCache"];
                 NSDictionary *kinfo = [kcache valueForKey:@"Info"];
