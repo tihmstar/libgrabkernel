@@ -115,12 +115,8 @@ char *getKernelpath(const char *buildmanifestPath, const char *model, int isRese
         for (NSDictionary *item in identities) {
             NSDictionary *info = [item valueForKey:@"Info"];
             NSString *hwmodel = [info valueForKey:@"DeviceClass"];
-            hwmodel = hwmodel.uppercaseString;
             
-            NSString *variant = [info valueForKey:@"Variant"];
-            int goodversion = (strstr(variant.UTF8String, "Research") != NULL) == (isResearchKernel != 0);
-                        
-            if (strcasecmp(hwmodel.UTF8String, model) == 0 && goodversion) {
+            if (strcasecmp(hwmodel.UTF8String, model) == 0) {
                 NSDictionary *manifest = [item valueForKey:@"Manifest"];
                 NSDictionary *kcache = [manifest valueForKey:@"KernelCache"];
                 NSDictionary *kinfo = [kcache valueForKey:@"Info"];
