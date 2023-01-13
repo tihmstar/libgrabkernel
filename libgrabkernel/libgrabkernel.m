@@ -103,7 +103,7 @@ static void fragmentzip_callback(unsigned int progress){
     }
 }
 
-char *getKernelpath(const char *buildmanifestPath, const char *model){
+char *getKernelpath(const char *buildmanifestPath, const char *model, int isResearchKernel){
     int err = 0;
     char *rt = NULL;
     assure(buildmanifestPath);
@@ -117,7 +117,10 @@ char *getKernelpath(const char *buildmanifestPath, const char *model){
             NSString *hwmodel = [info valueForKey:@"DeviceClass"];
             hwmodel = hwmodel.uppercaseString;
             
-            if (strcmp(hwmodel.UTF8String, model) == 0) {
+            NSString *variant = [info valueForKey:@"Variant"];
+            int goodversion = (strstr(variant.UTF8String, "Research") != NULL) == (isResearchKernel != 0);
+                        
+            if (strcasecmp(hwmodel.UTF8String, model) == 0 && goodversion) {
                 NSDictionary *manifest = [item valueForKey:@"Manifest"];
                 NSDictionary *kcache = [manifest valueForKey:@"KernelCache"];
                 NSDictionary *kinfo = [kcache valueForKey:@"Info"];
@@ -127,6 +130,7 @@ char *getKernelpath(const char *buildmanifestPath, const char *model){
             }
         }
     }
+    assure(rt);
 error:
     if (err) {
         printf("[GK] Error: %d\n",err);
@@ -135,7 +139,7 @@ error:
     return rt;
 }
 
-int grabkernel(char *downloadPath){
+int grabkernel(const char *downloadPath, int isResearchKernel){
     int err = 0;
     char build[0x100] = {};
     char machine[0x100] = {};
@@ -172,7 +176,7 @@ int grabkernel(char *downloadPath){
     assure(!fragmentzip_download_file(fz, "BuildManifest.plist", path, fragmentzip_callback));
     printf(" ok!\n");
     
-    assure(kernelpath = getKernelpath(path, hwmodel));
+    assure(kernelpath = getKernelpath(path, hwmodel, isResearchKernel));
     printf("[GK] Downloading kernel: %s",kernelpath);
     assure(!fragmentzip_download_file(fz, kernelpath, downloadPath, fragmentzip_callback));
     printf(" ok!\n");

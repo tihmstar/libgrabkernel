@@ -23,8 +23,10 @@
     char path[1024] = {0};
     snprintf(path, sizeof(path), "%skernel", getenv("TMPDIR"));
 
-    grabkernel(path);
+    int asd = grabkernel(path, 0);
 
+
+    printf("");
 }
 
 
