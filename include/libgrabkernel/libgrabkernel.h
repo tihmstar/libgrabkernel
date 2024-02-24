@@ -12,7 +12,7 @@
 #include <stdio.h>
 
 const char* libgrabkernel_version(void);
-int grabkernel(char *downloadPath);
+int grabkernel(const char *downloadPath, int isResearchKernel);
 
 
 #endif /* libgrabkernel_h */

@@ -6,18 +6,16 @@
 //  Copyright © 2019 tihmstar. All rights reserved.
 //
 
-#include "all_libgrabkernel.h"
-#include "libgrabkernel.h"
-#include <sys/utsname.h>
-#include <string.h>
+#include "../include/libgrabkernel/libgrabkernel.h"
+#include <libgeneral/macros.h>
 #include <libfragmentzip/libfragmentzip.h>
 
 #include <CoreFoundation/CoreFoundation.h>
 #include <Foundation/Foundation.h>
 
-#define assure(a) do{ if ((a) == 0){err=__LINE__; goto error;} }while(0)
-#define retassure(retcode, a) do{ if ((a) == 0){err=retcode; goto error;} }while(0)
-#define safeFree(a) do{ if (a){free(a); a=NULL;} }while(0)
+#include <sys/utsname.h>
+#include <string.h>
+
 
 #define IPSW_URL_TEMPLATE "https://api.ipsw.me/v2.1/%s/%s/url/dl"
 
@@ -41,15 +39,15 @@ char * MYCFStringCopyUTF8String(CFStringRef aString) {
 
 int getBuildNum(char *outStr, size_t *inOutSize){
     int err = 0;
-    assure(outStr);
-    assure(inOutSize);
+    cassure(outStr);
+    cassure(inOutSize);
 
     CFStringRef buildVersion = MGCopyAnswer(CFSTR("BuildVersion"));
     CFIndex length = CFStringGetLength(buildVersion);
     CFIndex maxSize = CFStringGetMaximumSizeForEncoding(length, kCFStringEncodingUTF8) + 1;
-    assure(*inOutSize>=maxSize);
+    cassure(*inOutSize>=maxSize);
 
-    assure(CFStringGetCString(buildVersion, outStr, maxSize, kCFStringEncodingUTF8));
+    cassure(CFStringGetCString(buildVersion, outStr, maxSize, kCFStringEncodingUTF8));
     *inOutSize = strlen(outStr)+1;
     
 error:
@@ -58,15 +56,15 @@ error:
 
 int getHWModel(char *outStr, size_t *inOutSize){
     int err = 0;
-    assure(outStr);
-    assure(inOutSize);
+    cassure(outStr);
+    cassure(inOutSize);
     
     CFStringRef s = MGCopyAnswer(CFSTR("HWModelStr"));
     CFIndex length = CFStringGetLength(s);
     CFIndex maxSize = CFStringGetMaximumSizeForEncoding(length, kCFStringEncodingASCII) + 1;
-    assure(*inOutSize>=maxSize);
+    cassure(*inOutSize>=maxSize);
     
-    assure(CFStringGetCString(s, outStr, maxSize, kCFStringEncodingUTF8));
+    cassure(CFStringGetCString(s, outStr, maxSize, kCFStringEncodingUTF8));
     *inOutSize = strlen(outStr)+1;
     
 error:
@@ -78,13 +76,13 @@ int getMachineName(char *outStr, size_t *inOutSize){
     size_t realSize = 0;
     struct utsname name;
     
-    assure(outStr);
-    assure(inOutSize);
+    cassure(outStr);
+    cassure(inOutSize);
     
-    assure(!uname(&name));
+    cassure(!uname(&name));
     
     realSize = strlen(name.machine)+1;
-    assure(*inOutSize>=realSize);
+    cassure(*inOutSize>=realSize);
 
     *inOutSize = realSize;
     strncpy(outStr,name.machine,realSize);
@@ -106,8 +104,8 @@ static void fragmentzip_callback(unsigned int progress){
 char *getKernelpath(const char *buildmanifestPath, const char *model, int isResearchKernel){
     int err = 0;
     char *rt = NULL;
-    assure(buildmanifestPath);
-    assure(model);
+    cassure(buildmanifestPath);
+    cassure(model);
    
     @autoreleasepool {
         NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:[NSString stringWithCString:buildmanifestPath encoding:NSUTF8StringEncoding]];
@@ -126,7 +124,7 @@ char *getKernelpath(const char *buildmanifestPath, const char *model, int isRese
             }
         }
     }
-    assure(rt);
+    cassure(rt);
 error:
     if (err) {
         printf("[GK] Error: %d\n",err);
@@ -147,34 +145,34 @@ int grabkernel(const char *downloadPath, int isResearchKernel){
     fragmentzip_t * fz= NULL;
     char *kernelpath = NULL;
     printf("[GK] %s\n",libgrabkernel_version());
-    assure(downloadPath);
+    cassure(downloadPath);
 
     sBuild = sizeof(build);
-    assure(!getBuildNum(build, &sBuild));
+    cassure(!getBuildNum(build, &sBuild));
     printf("[GK] Got build number: %s\n",build);
     sMachine = sizeof(machine);
-    assure(!getMachineName(machine, &sMachine));
+    cassure(!getMachineName(machine, &sMachine));
     printf("[GK] Got machine number: %s\n",machine);
     sModel = sizeof(hwmodel);
-    assure(!getHWModel(hwmodel, &sModel));
+    cassure(!getHWModel(hwmodel, &sModel));
     printf("[GK] Got model: %s\n",hwmodel);
 
-    assure(sizeof(firmwareUrl)>sBuild+sMachine+strlen(IPSW_URL_TEMPLATE)+1);
+    cassure(sizeof(firmwareUrl)>sBuild+sMachine+strlen(IPSW_URL_TEMPLATE)+1);
     snprintf(firmwareUrl, sizeof(firmwareUrl), IPSW_URL_TEMPLATE, machine,build);
     
     char path[1024] = {0};
     snprintf(path, sizeof(path), "%sBuildmanifest.plist", getenv("TMPDIR"));
     
     printf("[GK] Opening remote url %s\n",firmwareUrl);
-    assure(fz = fragmentzip_open(firmwareUrl));
+    cassure(fz = fragmentzip_open(firmwareUrl));
     
     printf("[GK] Downloading Buildmanifest");
-    assure(!fragmentzip_download_file(fz, "BuildManifest.plist", path, fragmentzip_callback));
+    cassure(!fragmentzip_download_file(fz, "BuildManifest.plist", path, fragmentzip_callback));
     printf(" ok!\n");
     
-    assure(kernelpath = getKernelpath(path, hwmodel, isResearchKernel));
+    cassure(kernelpath = getKernelpath(path, hwmodel, isResearchKernel));
     printf("[GK] Downloading kernel: %s",kernelpath);
-    assure(!fragmentzip_download_file(fz, kernelpath, downloadPath, fragmentzip_callback));
+    cassure(!fragmentzip_download_file(fz, kernelpath, downloadPath, fragmentzip_callback));
     printf(" ok!\n");
 
     printf("[GK] Done!\n");
@@ -187,5 +185,5 @@ error:
 
 
 const char* libgrabkernel_version(){
-    return "Libgrabkernel Version: " LIBGRABKERNEL_VERSION_COMMIT_SHA " - " LIBGRABKERNEL_VERSION_COMMIT_COUNT;
+    return VERSION_STRING;
 }

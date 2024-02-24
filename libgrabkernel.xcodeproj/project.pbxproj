@@ -37,7 +37,6 @@
 		87D2D16922037F0000DA88A5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		87D2D17022037F3200DA88A5 /* libgrabkernel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = libgrabkernel.h; path = ../include/libgrabkernel/libgrabkernel.h; sourceTree = "<group>"; };
 		87D2D17122037F3200DA88A5 /* libgrabkernel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = libgrabkernel.m; sourceTree = "<group>"; };
-		87D2D1732203878200DA88A5 /* all_libgrabkernel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = all_libgrabkernel.h; sourceTree = "<group>"; };
 		87D2D17522038D8200DA88A5 /* libfragmentzip.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfragmentzip.a; path = external/libfragmentzip/libfragmentzip/.libs/libfragmentzip.a; sourceTree = "<group>"; };
 		87D2D17722038EF300DA88A5 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = "deps/curl-static/libcurl.a"; sourceTree = "<group>"; };
 		87D2D17922038EFC00DA88A5 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -85,7 +84,6 @@
 			children = (
 				87D2D15A22037EFE00DA88A5 /* AppDelegate.h */,
 				87D2D15B22037EFE00DA88A5 /* AppDelegate.m */,
-				87D2D1732203878200DA88A5 /* all_libgrabkernel.h */,
 				87D2D17022037F3200DA88A5 /* libgrabkernel.h */,
 				87D2D17122037F3200DA88A5 /* libgrabkernel.m */,
 				87D2D15D22037EFE00DA88A5 /* ViewController.h */,

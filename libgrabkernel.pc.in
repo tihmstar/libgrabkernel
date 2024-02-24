@@ -5,5 +5,8 @@ includedir=@includedir@
 
 Name: libgrabkernel
 Description: an iOS kernel downloader lib
+
+Requires: @libfragmentzip_requires@
+Version: @VERSION_COMMIT_COUNT@
 Libs: -L${libdir} -lgrabkernel
 Cflags: -I${includedir}

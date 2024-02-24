@@ -24,3 +24,10 @@ ltmain.sh
 m4/
 missing
 stamp-h1
+configure~
+config.h.in~
+Makefile
+Makefile.in
+project.xcworkspace
+xcshareddata
+xcuserdata
